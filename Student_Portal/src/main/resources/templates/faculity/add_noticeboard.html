@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="faculity/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container  p-5">
+			<div class="row">
+				<div class="col-md-5 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">Add Noticeboard</h4>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<form class="form-signin" method="post"
+								th:action="@{createNotice}">
+
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Faculty
+										Name </label> <input readonly="readonly" type="text" required
+										class="form-control" th:value="${user.fullName}"
+										name="faculityName">
+
+								</div>
+								<input type="hidden" name="faculityId" th:value="${user.id}">
+								<div class="mb-3">
+									<label>Date</label> <input type="date" required name="date"
+										id="date" class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Description</label>
+									<textarea rows="5" cols="" name="description" required
+										class="form-control"></textarea>
+								</div>
+
+								<button class="btn btn-success col-md-12" type="submit">Submit
+								</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

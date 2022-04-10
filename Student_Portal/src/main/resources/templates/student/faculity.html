@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="student/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+
+			<div class="row">
+				<div class="col-md-9 offset-md-1">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">Faculty</p>
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sl No</th>
+										<th scope="col">Full Name</th>
+										<th scope="col">DOB</th>
+										<th scope="col">Mob No</th>
+										<th scope="col">Email</th>
+										<th scope="col">Address</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="s,c:${list}">
+										<th scope="row">[[${c.count}]]</th>
+										<td>[[${s.fullName}]]</td>
+										<td>[[${s.dob}]]</td>
+										<td>[[${s.mobNo}]]</td>
+										<td>[[${s.email}]]</td>
+										<td>[[${s.address}]]</td>
+
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

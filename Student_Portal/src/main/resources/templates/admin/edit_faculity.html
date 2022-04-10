@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-2">
+			<div class="row">
+				<div class="col-md-5 offset-md-3">
+					<div class="card paint-card">
+						<p class="fs-1 text-center text-custom">Edit Faculty</p>
+
+						<div class="card-body">
+
+							<form th:action="@{/admin/updateFaculity}" method="post">
+								<div class="row">
+									<div class="col">
+										<label class="form-label">Full Name</label> <input type="text"
+											required class="form-control" name="fullName"
+											th:value="${faculity.fullName}">
+									</div>
+
+									<div class="col">
+										<label class="form-label">DOB</label> <input type="date"
+											required th:value="${faculity.dob}" name="dob"
+											class="form-control">
+									</div>
+								</div>
+
+								<div class="row mt-2">
+									<div class="col">
+										<label class="form-label">Mobile Number</label> <input
+											required th:value="${faculity.mobNo}" name="mobNo"
+											type="text" class="form-control">
+									</div>
+
+									<div class="col">
+										<label class="form-label">Email Address</label> <input
+											required th:value="${faculity.email}" name="email"
+											type="email" class="form-control">
+									</div>
+								</div>
+								<div class="mb-3 mt-2">
+									<label class="form-label">Address</label>
+									<textarea name="address" rows="3" cols="" class="form-control"
+										required>[[${faculity.address}]]</textarea>
+								</div>
+
+								<input type="hidden" name="id" th:value="${faculity.id}">
+
+								<!-- <div class="mb-3">
+									<label class="form-label">Password</label> <input
+										name="password" type="password" class="form-control">
+								</div> -->
+
+								<button type="submit" class="btn btn-success col-md-12">Update</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="student/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+
+			<div class="row">
+				<div class="col-md-9 offset-md-1 ">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">View Timetable
+								Details</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sr. No</th>
+										<th scope="col">Faculty Name</th>
+										<th scope="col">Date</th>
+										<th scope="col">Start time</th>
+										<th scope="col">End time</th>
+										<th scope="col">Module Name</th>
+										<th scope="col">Platform</th>
+										<th scope="col" class="text-center">Link</th>
+										
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="t,c:${list}">
+										<th scope="row">[[${c.count}]]</th>
+										<td>[[${t.faculityName}]]</td>
+										<td>[[${t.date}]]</td>
+										<td>[[${t.startTime}]]</td>
+										<td>[[${t.endTime}]]</td>
+										<td>[[${t.subjectName}]]</td>
+										<td>[[${t.apps}]]</td>
+										<td class="text-center"><a th:href="@{''+${t.link}}"
+											class="text-decoration-none">Click here</a></td>
+
+										
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

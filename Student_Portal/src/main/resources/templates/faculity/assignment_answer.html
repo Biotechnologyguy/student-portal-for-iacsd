@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="faculity/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-4">
+
+			<div class="row">
+				<div class="col-md-9 offset-md-1">
+					<div class="card paint-card">
+						<div class="card-body">
+							<p class="text-center text-custom fs-1">View Assignment
+								Answer</p>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Sr. No</th>
+										<th scope="col">Faculty name</th>
+										<th scope="col">Subject Name</th>
+										<th scope="col">Student Name</th>
+										<th scope="col">Download</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="a,c:${list}">
+										<th scope="row">[[${c.count}]]</th>
+										<td>[[${user.fullName}]]</td>
+										<td>[[${a.subjectName}]]</td>
+
+										<td>[[${a.userName}]]</td>
+										<td><a th:href="@{'downloadAnswer/'+${a.id}}"
+											class="text-decoration-none">[[${a.fileName}]] <i
+												class="fa-solid fa-circle-arrow-down"></i>
+										</a></td>
+
+										<td>
+										
+										<th:block
+												th:if="${faculityService.checkGrade(user.id,a.id) == 'No'}">
+												<a th:href="@{'/faculity/lgradeAssignment/'+${a.id}}"
+													class="btn btn-sm btn-success">Grade</a>
+											</th:block>
+											
+											 <th:block
+												th:if="${faculityService.checkGrade(user.id,a.id) != 'No'}">
+												<span th:text="${faculityService.checkGrade(user.id,a.id)}+' Grade'"> </span>
+											</th:block></td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

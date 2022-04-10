@@ -1,0 +1,35 @@
+.bg-color {
+	background-color: #4a148c;
+}
+
+.backimg {
+	background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)),
+		url("../img/student1.jpg");
+	height: 70vh;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.navbar .nav-item .nav-link {
+	font-size: 20px;
+	color: white;
+}
+
+.navbar .nav-item:hover .nav-link {
+	background: white;
+	color: black;
+	border-radius: 10px;
+}
+
+.bg-custom {
+	background-color: #00577c;
+}
+
+.text-custom {
+	color: #00577c;
+}
+
+.btn-success {
+	background-color: #00577c;
+}

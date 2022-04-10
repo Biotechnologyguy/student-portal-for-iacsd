@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+<body>
+	<section>
+		<div class="container  p-5">
+			<div class="row">
+				<div class="col-md-5 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">Login</h4>
+							<form class="form-signin" method="post" th:action="@{/login}">
+
+								<div th:if="${param.error}" class="alert alert-danger">
+									Invalid username & Password</div>
+
+								<div th:if="${param.logout}" class="alert alert-success">
+									Logout Sucessfully</div>
+
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Email
+										address</label> <input type="email" class="form-control" required
+										name="username" id="exampleInputEmail1"
+										aria-describedby="emailHelp">
+
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Password</label>
+									<input required type="password" class="form-control" name="password"
+										id="exampleInputPassword1">
+								</div>
+
+								<button class="btn btn-success col-md-12" type="submit">Sign
+									in</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

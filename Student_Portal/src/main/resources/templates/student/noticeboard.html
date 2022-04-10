@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="student/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="caontainer p-2">
+
+			<div class="row">
+				<p class="text-center text-custom fs-1">View Noticeboard</p>
+				<div class="col-md-9 offset-md-1 mt-2" th:each="f,c:${list}">
+					<div class="card paint-card">
+						<div class="card-body">
+							<div class="text-center text-custom">
+								<i class="fa-solid fa-bookmark fa-2x"></i>
+							</div>
+							<p>[[${f.description}]]</p>
+							<p>
+								<span class="text-danger">Published Date:</span> [[${f.date}]] <br>
+								<span class="text-danger">Faculty Name : </span>[[${f.faculityName}]]
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

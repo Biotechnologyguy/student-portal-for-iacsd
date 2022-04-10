@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="faculity/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container  p-3">
+			<div class="row">
+				<div class="col-md-5 offset-md-3">
+					<div class="card paint-card">
+						<div class="card-body">
+							<h4 class="form-signin-heading text-center">Add Time table</h4>
+							<div th:if="${session.succMsg}" class="text-center">
+								<p class="text-success fs-3" th:text="${session.succMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('succMsg')}"></th:block>
+							</div>
+
+							<div th:if="${session.errorMsg}" class="text-center">
+								<p class="text-danger fs-3" th:text="${session.errorMsg}"></p>
+								<th:block th:text="${#session.removeAttribute('errorMsg')}"></th:block>
+							</div>
+							<form class="form-signin" method="post"
+								th:action="@{/faculity/updateTimeTable}">
+
+								<input type="hidden" name="faculityId" th:value="${user.id}">
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Faculity
+										Name </label> <input readonly="readonly" type="text" required
+										class="form-control" th:value="${user.fullName}"
+										name="faculityName">
+
+								</div>
+								<input type="hidden" name="faculityId" th:value="${user.id}">
+								<div class="mb-3">
+									<label>Date</label> <input type="date" name="date" id="date"
+										required th:value="${time.date}" class="form-control">
+								</div>
+								<div class="row">
+									<div class="mb-3 col">
+										<label>Start Time</label> <input type="time" name="startTime"
+											required th:value="${time.startTime}" id="date"
+											class="form-control">
+									</div>
+
+									<div class="mb-3 col">
+										<label>End Time</label> <input type="time" name="endTime"
+											required th:value="${time.endTime}" id="date"
+											class="form-control">
+									</div>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Subject
+										Name </label> <input type="text" class="form-control" required
+										th:value="${time.subjectName}" name="subjectName">
+
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Apps
+									</label> <input type="text" class="form-control" name="apps" required
+										th:value="${time.apps}">
+
+								</div>
+
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Link</label>
+									<input type="text" class="form-control" name="link" required
+										th:value="${time.link}">
+								</div>
+								<input type="hidden" name="id" th:value="${time.id}">
+								<button class="btn btn-success col-md-12" type="submit">Submit</button>
+
+								<div class="text-center p-3"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>
